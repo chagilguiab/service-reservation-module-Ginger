@@ -35,7 +35,7 @@ class App extends React.Component {
 
           <div className="dateBox">
             <div className="date">Date</div>
-            <div>
+            <div className="dateSelect">
               <form action="/action_page.php">
                 <input type="date"/>
               </form>
@@ -50,6 +50,12 @@ class App extends React.Component {
         </div>
 
         <button className="findATable">Find a Table</button>
+
+        <div className="footer">
+          <img className="footerImg" src="../../images/booked.png"/>
+          <div className= "footerText">Booked 8 times today</div>
+
+        </div>
 
       </div>)
   }
