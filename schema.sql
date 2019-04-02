@@ -1,6 +1,6 @@
 DROP DATABASE IF EXISTS reservations;
 
-CREATE DATABASE reservations;
+CREATE DATABASE opentable;
 
 USE reservations;
 

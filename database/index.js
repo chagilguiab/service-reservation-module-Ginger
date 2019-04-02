@@ -3,10 +3,17 @@ const mysqlConfig = require('./config.js');
 
 const connection = mysql.createConnection(mysqlConfig);
 
-var getAllReservationsAtDate = function(restaurantId, date, time, callback) {
-  connection.query(`select * from reservations where restaurantId = ${restaurantId} and date = ${date} and time = ${time}`, function(err, results) {
+var getAllReservationsAtDateAroundTime = function(restaurantId, date, time, callback) {
+  console.log(time-(-60));
+  connection.query(`select * from reservations where restaurantId = ${restaurantId} and date = ${date} and time >= ${time-60} and time <= ${time-(-60)}`, function(err, results) {
     callback(err, results);
   });
+}
+
+var getTablesOfRestaurant = function(restaurantId, callback) {
+  connection.query(`select * from tables where restaurantId = ${restaurantId}`), function(err, results) {
+    callback(err, results);
+  }
 }
 
 var addReservation = function(restaurantId, tableNumber, date, time, callback) {
@@ -22,7 +29,8 @@ var addTable = function(restaurantId, tableNumber, maxOccupancy, callback) {
 }
 
 module.exports = {
-  getAllReservationsAtDate,
+  getAllReservationsAtDateAroundTime,
+  getTablesOfRestaurant,
   addReservation,
   addTable
 }

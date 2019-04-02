@@ -5,7 +5,7 @@ class PartySize extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: 'For 2',
+      value: 2,
       sizes: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
     };
     this.handleChange = this.handleChange.bind(this);
@@ -13,7 +13,9 @@ class PartySize extends React.Component {
   }
 
   handleChange(event) {
-    var sizes = event.target.value;
+    var size = event.target.value;
+    this.setState({value: size});
+
   }
 
   createOptions() {
@@ -27,7 +29,7 @@ class PartySize extends React.Component {
   render() {
     return (
       <div className="partySizeSelect">
-        <select value={this.state.value}>
+        <select value={this.state.value} onChange={this.handleChange}>
           {this.createOptions()}
         </select>
       </div>

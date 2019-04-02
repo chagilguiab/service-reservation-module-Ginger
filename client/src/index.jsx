@@ -3,22 +3,15 @@ import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import Time from './components/Time.jsx';
 import PartySize from './components/PartySize.jsx';
+import FindATable from './components/FindATable.jsx';
 
 class App extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
       date: new Date(),
-      availableSlots: []
     }
   }
-  // handlePartySize = (selectedSize) => {
-  //   this.setState({partySize: selectedSize});
-  // };
-
-  // handleDate = (selectedDate) => {
-  //   this.setState({date: selectedDate});
-  // };
 
   // handleFindATable = () => {
   //   this.setState(availableTables: ?)
