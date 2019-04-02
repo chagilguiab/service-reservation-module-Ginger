@@ -1,26 +1,62 @@
-const webpack = require('webpack');
-const path = require('path');
-
 module.exports = {
-  context: __dirname + '/client',
-  entry: './index.js',
+  entry: __dirname + '/client/src',
   module: {
-    loaders: [
+    rules: [
       {
-        test: /\.jsx?$/,
+        test: [/\.jsx$/],
         exclude: /node_modules/,
-        loader: 'babel-loader',
-        query: {
-          presets: ['react', 'es2015', 'env']
-        },
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env', '@babel/preset-react']
+          }
+        }
       },
-    ],
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      }
+    ]
   },
+  resolve: { extensions: ["*", ".js", ".jsx"] },
   output: {
-    path: __dirname + '/public',
-    filename: 'app.js',
+    filename: 'bundle.js',
+    path: __dirname + '/client/dist'
   }
 };
 
+// "devDependencies": {
+//   "babel-core": "^6.25.0",
+//   "babel-loader": "^6.4.1",
+//   "babel-preset-es2015": "^6.24.1",
+//   "babel-preset-react": "^6.24.1",
+//   "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
+//   "webpack": "^2.2.1"
+// }
 
-//TODO: create a config for webpack 4
+
+// var path = require('path');
+// var SRC_DIR = path.join(__dirname, '/client/src');
+// var DIST_DIR = path.join(__dirname, '/client/dist');
+
+// module.exports = {
+//   entry: `${SRC_DIR}/index.jsx`,
+//   output: {
+//     filename: 'bundle.js',
+//     path: DIST_DIR
+//   },
+//   module: {
+//     loaders: [
+//       {
+//         test: /\.jsx?/,
+//         include: SRC_DIR,
+//         loader: 'babel-loader',
+//         query: {
+//           presets: ['react', 'es2015']
+//         }
+//       }
+//     ]
+//   }
+// };
+
+

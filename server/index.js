@@ -10,11 +10,12 @@ app.use(bodyParser.json());
 
 app.use(express.static(__dirname + '/../client/dist'));
 
-app.get('/api/restaurants/:restaurantId/:date', function(req, res) {
+app.get('/api/restaurants/:restaurantId/:date/:time', function(req, res) {
   let {restaurantId} = req.params;
-  let {date} =req.params;
+  let {date} = req.params;
+  let {time} = req.params;
 
-  db.getAllReservationsAtDate(restaurantId, date, function(err, results) {
+  db.getAllReservationsAtDate(restaurantId, date, time, function(err, results) {
     if(err) {
       console.log("Can not GET reservations");
       res.send(err);

@@ -3,8 +3,8 @@ const mysqlConfig = require('./config.js');
 
 const connection = mysql.createConnection(mysqlConfig);
 
-var getAllReservationsAtDate = function(restaurantId, date, callback) {
-  connection.query(`select * from reservations where restaurantId = ${restaurantId} and date = ${date}`, function(err, results) {
+var getAllReservationsAtDate = function(restaurantId, date, time, callback) {
+  connection.query(`select * from reservations where restaurantId = ${restaurantId} and date = ${date} and time = ${time}`, function(err, results) {
     callback(err, results);
   });
 }
