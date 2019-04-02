@@ -9,7 +9,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       date: new Date(),
-      availableTables: []
+      availableSlots: []
     }
   }
   // handlePartySize = (selectedSize) => {
@@ -26,16 +26,31 @@ class App extends React.Component {
 
   render() {
     return (<div className="app">
-        <h2>Make a reservation</h2>
-        <h4>Party Size</h4>
+        <div className="makeAReservation">Make a reservation</div>
+
+        <div className="partySize">Party Size</div>
         <PartySize sizes={this.state.sizes}/>
-        <h4>Date</h4>
-        <form action="/action_page.php">
-          <input type="date"/>
-        </form>
-        <h4>Time</h4>
-        <Time value={this.state.value} times={this.state.times}/> <br/>
-        <button>Find a Table</button>
+
+        <div className="dateTime">
+
+          <div className="dateBox">
+            <div className="date">Date</div>
+            <div>
+              <form action="/action_page.php">
+                <input type="date"/>
+              </form>
+            </div>
+          </div>
+
+          <div className="timeBox">
+            <div className="time">Time</div>
+            <Time value={this.state.value} times={this.state.times}/> <br/>
+          </div>
+
+        </div>
+
+        <button className="findATable">Find a Table</button>
+
       </div>)
   }
 }

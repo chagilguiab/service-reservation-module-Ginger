@@ -26,9 +26,11 @@ class PartySize extends React.Component {
 
   render() {
     return (
-      <select value={this.state.value}>
-        {this.createOptions()}
-      </select>
+      <div className="partySizeSelect">
+        <select value={this.state.value}>
+          {this.createOptions()}
+        </select>
+      </div>
     );
   }
 }

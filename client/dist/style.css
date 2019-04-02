@@ -1,0 +1,75 @@
+/* select {
+  float:right;
+  padding:8px 12px;
+  border:2px solid #78788c;
+  cursor:pointer;
+  transition:all .3s;
+} */
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+.app {
+  width: 420px;
+  padding: 10px;
+  margin: 0;
+  box-shadow: 0 2px 8px rgba(153,153,153,.4);
+}
+
+.makeAReservation {
+  font-size: 21px;
+  font-weight: bold;
+  border-bottom: 1px solid #d8d9db;
+  /* line-height: 24px; */
+  text-align: center;
+}
+.partySize {
+  height: 35px;
+  font-size: 14px;
+}
+
+.date {
+  height: 35px;
+  font-size: 14px;
+}
+
+.time {
+  height: 35px;
+  font-size: 14px;
+}
+
+.dateBox {
+  width: 203px;
+  padding-right: 2px;
+  border-bottom: 1px solid #d8d9db;
+}
+
+.timeBox {
+  width: 203px;
+  padding-left: 2px;
+  border-bottom: 1px solid #d8d9db;
+}
+
+.dateTime {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.findATable {
+  background-color: #da3743;
+  color: white;
+  cursor: pointer;
+
+
+}
+
+.timeSelect {
+
+}
+
+.partySizeSelect {
+  width: 100%;
+  height: 35px;
+  border-bottom: 1px solid #d8d9db;
+}
