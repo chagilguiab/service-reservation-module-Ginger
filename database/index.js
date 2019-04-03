@@ -17,7 +17,7 @@ var getTablesOfRestaurant = function(restaurantId, callback) {
 }
 
 var showAvailableTables = function(restaurantId, partySize, date, time, callback) {
-  connection.query(`select * from tables where restaurantId = ${restaurantId} and maxOccupancy >= ${partySize} and not exists (select * from reservations where restaurantId = ${restaurantId} and date = ${date} and time >= ${time-60} and time <= ${time-(-60)} and tableNumber = tables.tableNumber)`, function(err, results) {
+  connection.query(`select * from tables where restaurantId = ${restaurantId} and maxOccupancy >= ${partySize} and not exists (select * from reservations where restaurantId = ${restaurantId} and date = ${date} and time >= ${time-59} and time <= ${time-(-59)} and tableNumber = tables.tableNumber)`, function(err, results) {
     callback(err, results);
   });
 }
