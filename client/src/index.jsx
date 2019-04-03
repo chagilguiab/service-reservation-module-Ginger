@@ -13,9 +13,6 @@ class App extends React.Component {
     }
   }
 
-  // handleFindATable = () => {
-  //   this.setState(availableTables: ?)
-  // }
 
   render() {
     return (<div className="app">
@@ -29,7 +26,7 @@ class App extends React.Component {
           <div className="dateBox">
             <div className="date">Date</div>
             <div className="dateSelect">
-              <form action="/action_page.php">
+              <form className="dateForm" action="/action_page.php">
                 <input type="date"/>
               </form>
             </div>
@@ -42,7 +39,7 @@ class App extends React.Component {
 
         </div>
 
-        <button className="findATable">Find a Table</button>
+        <FindATable/>
 
         <div className="footer">
           <img className="footerImg" src="../../images/booked.png"/>
@@ -55,4 +52,3 @@ class App extends React.Component {
 }
 
 ReactDOM.render(<App />, document.getElementById('app'));
-

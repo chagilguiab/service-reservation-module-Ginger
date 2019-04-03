@@ -5,9 +5,12 @@ class FindATable extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      // partySize:
+      // date:
+      // time:
       availableSlots: []
     };
-    this.onClick = this.onClick.bind(this);
+    //this.onClick = this.onClick.bind(this);
   }
 
   submit() {

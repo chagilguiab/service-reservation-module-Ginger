@@ -29,7 +29,7 @@ class PartySize extends React.Component {
   render() {
     return (
       <div className="partySizeSelect">
-        <select value={this.state.value} onChange={this.handleChange}>
+        <select className="select" value={this.state.value} onChange={this.handleChange}>
           {this.createOptions()}
         </select>
       </div>

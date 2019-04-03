@@ -16,6 +16,12 @@ var getTablesOfRestaurant = function(restaurantId, callback) {
   }
 }
 
+var showAvailableTables = function(restaurantId, partySize, date, time, callback) {
+  connection.query(`select * from tables where restaurantId = ${restaurantId} and maxOccupancy >= ${partySize} and not exists (select * from reservations where restaurantId = ${restaurantId} and date = ${date} and time >= ${time-60} and time <= ${time-(-60)} and tableNumber = tables.tableNumber)`, function(err, results) {
+    callback(err, results);
+  });
+}
+
 var addReservation = function(restaurantId, tableNumber, date, time, callback) {
   connection.query("insert into reservations (restaurantId, tableNumber, date, time) values (?, ?, ?, ?)", [restaurantId, tableNumber, date, time], function(err, results) {
     callback(err, results);
@@ -31,6 +37,7 @@ var addTable = function(restaurantId, tableNumber, maxOccupancy, callback) {
 module.exports = {
   getAllReservationsAtDateAroundTime,
   getTablesOfRestaurant,
+  showAvailableTables,
   addReservation,
   addTable
 }
