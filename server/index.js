@@ -10,21 +10,7 @@ app.use(bodyParser.json());
 
 app.use(express.static(__dirname + '/../client/dist'));
 
-// app.get('/api/restaurants/:restaurantId/:partySize/:date/:time', function(req, res) {
-//   let {restaurantId} = req.params;
-//   let {partySize} = req.params;
-//   let {date} = req.params;
-//   let {time} = req.params;
 
-//   db.getAllReservationsAtDateAroundTime(restaurantId, date, time, function(err, results) {
-//     if(err) {
-//       console.log("Can not GET reservations");
-//       res.send(err);
-//     } else {
-//       res.send(results);
-//     }
-//   });
-// });
 var showAvailableSlots = function(restaurantId, partySize, date, time, firstSlot, lastSlot, slots, res) {
   if (time > lastSlot) {
     res.send(slots);
@@ -53,3 +39,20 @@ app.get('/api/restaurants/:restaurantId/:partySize/:date/:time', function(req, r
 app.listen(port, function() {
   console.log(`listening on port ${port}`);
 });
+
+
+// app.get('/api/restaurants/:restaurantId/:partySize/:date/:time', function(req, res) {
+//   let {restaurantId} = req.params;
+//   let {partySize} = req.params;
+//   let {date} = req.params;
+//   let {time} = req.params;
+
+//   db.getAllReservationsAtDateAroundTime(restaurantId, date, time, function(err, results) {
+//     if(err) {
+//       console.log("Can not GET reservations");
+//       res.send(err);
+//     } else {
+//       res.send(results);
+//     }
+//   });
+// });
