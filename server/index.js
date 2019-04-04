@@ -14,6 +14,7 @@ app.use(express.static(__dirname + '/../client/dist'));
 var showAvailableSlots = function(restaurantId, partySize, date, time, firstSlot, lastSlot, slots, res) {
   if (time > lastSlot) {
     res.send(slots);
+    return;
   }
   db.showAvailableTables(restaurantId, partySize, date, time, function(err, results) {
     if (!err && results.length > 0) {

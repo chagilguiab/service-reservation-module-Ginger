@@ -15,27 +15,19 @@ class App extends React.Component {
     }
   }
 
-  componentDidMount() {
-
-  }
-
   handleFindATable() {
-    console.log('myPartySize', this.myPartySize, document.getElementById('dateInput').value, this.myTime);
-
     var restaurantId = this.state.restaurantId;
     var partySize = this.myPartySize.state.value;
     var date = document.getElementById('dateInput').value;
     var time = this.myTime.state.value;
 
     $.ajax({
-      url: `/api/restaurants/${restaurantId}/${partySize}/${date}/${time}`,
+      url: `http://localhost:3000/api/restaurants/${restaurantId}/${partySize}/${date}/${time}`,
       method: "GET",
       contentType: "application/json",
-      success: data => { this.setState({ availableSlots: data }); console.log('availableSlots', data);},
+      success: data => {this.setState({ availableSlots: data }); console.log('inside ajax', this.state);},
       error: () => console.log("Fail: GET available slots!")
     });
-
-
   }
 
 
@@ -53,7 +45,7 @@ class App extends React.Component {
             <div className="date">Date</div>
             <div className="dateSelect">
               <form className="dateForm" action="/action_page.php">
-                <input type="date" id="dateInput"/>
+                <input type="date" value = "2019-04-05" id="dateInput"/>
               </form>
             </div>
           </div>
@@ -66,7 +58,8 @@ class App extends React.Component {
         </div>
 
         <FindATable handleFindATable={this.handleFindATable.bind(this)}/>
-        <Slots/>
+        {console.log('inside render', this.state.availableSlots)}
+        <Slots availableSlots={this.state.availableSlots}/>
 
         <div className="footer">
           <img className="footerImg" src="../../images/booked.png"/>
@@ -79,13 +72,3 @@ class App extends React.Component {
 }
 
 ReactDOM.render(<App />, document.getElementById('app'));
-
-
-        // <div className="selectATime">Select a time:</div>
-        // <div className="slots">
-        //   <button className="slot"><img className="tableImg" src="../../images/table.png"/>7:30 PM</button>
-        //   <button className="slot"><img className="tableImg" src="../../images/table.png"/>7:30 PM</button>
-        //   <button className="slot"><img className="tableImg" src="../../images/table.png"/>7:30 PM</button>
-        //   <button className="slot"><img className="tableImg" src="../../images/table.png"/>7:30 PM</button>
-        //   <button className="slot"><img className="tableImg" src="../../images/table.png"/>7:30 PM</button>
-        // </div>
