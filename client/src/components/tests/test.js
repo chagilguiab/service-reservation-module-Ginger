@@ -1,5 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
+import sinon from 'sinon';
 
 import FindATable from '../FindATable';
 import PartySize from '../PartySize';
@@ -48,3 +49,9 @@ describe('Time', () => {
     });
 });
 
+describe('FindATable', () => {
+  it('renders a <button>', () => {
+    const renderedComponent = shallow(<FindATable/>);
+    expect(renderedComponent.find('button').node).toBeDefined();
+  });
+});
