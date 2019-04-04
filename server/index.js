@@ -16,7 +16,6 @@ var showAvailableSlots = function(restaurantId, partySize, date, time, firstSlot
     res.send(slots);
   }
   db.showAvailableTables(restaurantId, partySize, date, time, function(err, results) {
-    console.log(slots, restaurantId, partySize, date, time, firstSlot, lastSlot);
     if (!err && results.length > 0) {
       showAvailableSlots(restaurantId, partySize, date, time - (-15), firstSlot, lastSlot, [time].concat(slots), res);
     } else {

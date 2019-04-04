@@ -4,7 +4,6 @@ const mysqlConfig = require('./config.js');
 const connection = mysql.createConnection(mysqlConfig);
 
 var getAllReservationsAtDateAroundTime = function(restaurantId, date, time, callback) {
-  console.log(time-(-60));
   connection.query(`select * from reservations where restaurantId = ${restaurantId} and date = ${date} and time >= ${time-60} and time <= ${time-(-60)}`, function(err, results) {
     callback(err, results);
   });

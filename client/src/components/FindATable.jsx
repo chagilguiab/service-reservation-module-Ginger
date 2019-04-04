@@ -5,22 +5,14 @@ class FindATable extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      // partySize:
-      // date:
-      // time:
-      availableSlots: []
+      handleFindATable: props.handleFindATable,
     };
-    //this.onClick = this.onClick.bind(this);
-  }
-
-  submit() {
-
   }
 
 
   render() {
     return (
-      <button className="findATable" onClick={this.submit}>Find a Table</button>
+      <button className="findATable" onClick={this.state.handleFindATable}>Find a Table</button>
     );
   }
 }
