@@ -11,7 +11,8 @@ class App extends React.Component {
     super(props);
     this.state = {
       restaurantId: 1,
-      availableSlots: []
+      availableSlots: [],
+      findATableIsClicked: false
     }
   }
 
@@ -22,10 +23,10 @@ class App extends React.Component {
     var time = this.myTime.state.value;
 
     $.ajax({
-      url: `http://localhost:3000/api/restaurants/${restaurantId}/${partySize}/${date}/${time}`,
+      url: `api/restaurants/${restaurantId}/${partySize}/${date}/${time}`,
       method: "GET",
       contentType: "application/json",
-      success: data => {this.setState({ availableSlots: data }); console.log('inside ajax', this.state);},
+      success: data => {this.setState({ availableSlots: data }); this.setState({ findATableIsClicked: true }); console.log('inside ajax', this.state);},
       error: () => console.log("Fail: GET available slots!")
     });
   }
@@ -57,7 +58,7 @@ class App extends React.Component {
 
         </div>
 
-        <FindATable handleFindATable={this.handleFindATable.bind(this)}/>
+        {this.state.findATableIsClicked ? null : <FindATable handleFindATable={this.handleFindATable.bind(this)}/>}
         {console.log('inside render', this.state.availableSlots)}
         <Slots availableSlots={this.state.availableSlots}/>
 
