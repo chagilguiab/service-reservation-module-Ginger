@@ -60,11 +60,12 @@ class App extends React.Component {
 
         {this.state.findATableIsClicked ? null : <FindATable handleFindATable={this.handleFindATable.bind(this)}/>}
         {console.log('inside render', this.state.availableSlots)}
-        <Slots availableSlots={this.state.availableSlots}/>
+        {this.state.findATableIsClicked ? <Slots availableSlots={this.state.availableSlots}/> : null}
+
 
         <div className="footer">
-          <img className="footerImg" src="../../images/booked.png"/>
-          <div className= "footerText">Booked 8 times today</div>
+          <img className="footerImg" src={require("../../images/booked.png")}/>
+          <div className= "footerText">Booked 2 times today</div>
 
         </div>
 

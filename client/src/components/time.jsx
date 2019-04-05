@@ -17,7 +17,6 @@ class Time extends React.Component {
     this.setState({value: time});
   }
 
-
   createOptions() {
     let optionedTimes = [];
     for (var key in this.state.times) {

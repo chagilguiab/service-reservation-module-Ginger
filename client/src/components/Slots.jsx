@@ -8,22 +8,31 @@ class Slots extends React.Component {
     // this.state = {
     //   availableSlots: props.availableSlots
     // };
-    // this.createSlots = this.createSlots.bind(this);
   }
 
-  // componentDidMount() {
-  //   this.setState({availableSlots: this.props.availableSlots});
-  // }
-
-  // componentDidUpdate() {
-  //   this.setState({availableSlots: this.props.availableSlots});
-  // }
 
   createSlots() {
     console.log(this, 'createSlots', this.props.availableSlots);
     let slots = [];
-    this.props.availableSlots.forEach(slot => {
-      slots.push(<button className="slot"> <img className="tableImg" src="../../images/table.png"/> {slot} </button>);
+
+    let formatedSlots = this.props.availableSlots.map(slot => {
+      let remainder = (slot / 15) % 4;
+      let hour = (slot / 15 - remainder) / 4;
+      let minute = remainder * 15;
+      if (minute === 0) {
+        minute = '00';
+      }
+      if (hour < 12) {
+        return hour + ':' + minute + 'AM';
+      } else {
+        return (hour - 12) + ':' + minute + 'PM';
+      }
+    });
+
+    formatedSlots = formatedSlots.reverse();
+
+    formatedSlots.forEach(slot => {
+      slots.push(<button className="slot"> <img className="tableImg" src={require("../../../images/table.png")}/> {slot} </button>);
     });
     return slots;
   }
