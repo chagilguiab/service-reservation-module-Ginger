@@ -15,7 +15,7 @@ class PartySize extends React.Component {
   handleChange(event) {
     let size = event.target.value;
     this.setState({value: size});
-
+    this.props.handleInputChange();
   }
 
   createOptions() {

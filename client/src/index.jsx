@@ -49,7 +49,7 @@ class App extends React.Component {
 
         <div className="partySize">Party Size</div>
 
-        <PartySize sizes={this.state.sizes} ref={(ref) => this.myPartySize = ref}/>
+        <PartySize sizes={this.state.sizes} handleInputChange={this.handleInputChange} ref={(ref) => this.myPartySize = ref}/>
 
         <div className="dateTime">
 
