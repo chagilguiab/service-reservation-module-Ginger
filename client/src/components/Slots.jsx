@@ -1,5 +1,4 @@
 import React from 'react';
-import $ from 'jquery';
 
 class Slots extends React.Component {
   constructor(props) {
@@ -24,6 +23,8 @@ class Slots extends React.Component {
       }
       if (hour < 12) {
         return hour + ':' + minute + 'AM';
+      } else if (hour === 12) {
+        return '12' + ':' + minute + 'PM';
       } else {
         return (hour - 12) + ':' + minute + 'PM';
       }
@@ -51,3 +52,5 @@ class Slots extends React.Component {
 }
 
 export default Slots;
+
+

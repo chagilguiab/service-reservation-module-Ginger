@@ -1,5 +1,4 @@
 import React from 'react';
-import $ from 'jquery';
 
 class Time extends React.Component {
   constructor(props) {
@@ -19,7 +18,6 @@ class Time extends React.Component {
     this.props.handleInputChange();
   }
 
-  // this.props.handleInputChange
 
   createOptions() {
     let optionedTimes = [];

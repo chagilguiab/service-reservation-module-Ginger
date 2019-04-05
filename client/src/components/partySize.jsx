@@ -1,5 +1,4 @@
 import React from 'react';
-import $ from 'jquery';
 
 class PartySize extends React.Component {
   constructor(props) {
