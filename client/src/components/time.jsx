@@ -12,10 +12,14 @@ class Time extends React.Component {
     this.createOptions = this.createOptions.bind(this);
   }
 
+
   handleChange(event) {
     let time = event.target.value;
     this.setState({value: time});
+    this.props.handleInputChange();
   }
+
+  // this.props.handleInputChange
 
   createOptions() {
     let optionedTimes = [];

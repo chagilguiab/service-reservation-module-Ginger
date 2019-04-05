@@ -5,6 +5,9 @@ import Time from './components/Time.jsx';
 import PartySize from './components/PartySize.jsx';
 import FindATable from './components/FindATable.jsx';
 import Slots from './components/Slots.jsx';
+import NotAvailable from './components/NotAvailable.jsx';
+import ShowNextAvailable from './components/ShowNextAvailable.jsx';
+
 
 class App extends React.Component {
   constructor (props) {
@@ -12,9 +15,17 @@ class App extends React.Component {
     this.state = {
       restaurantId: 1,
       availableSlots: [],
-      findATableIsClicked: false
+      findATableIsHidden: false
     }
+    this.handleInputChange = this.handleInputChange.bind(this);
   }
+
+  handleInputChange() {
+    this.setState({
+      findATableIsHidden: false
+    });
+  }
+
 
   handleFindATable() {
     var restaurantId = this.state.restaurantId;
@@ -26,7 +37,7 @@ class App extends React.Component {
       url: `api/restaurants/${restaurantId}/${partySize}/${date}/${time}`,
       method: "GET",
       contentType: "application/json",
-      success: data => {this.setState({ availableSlots: data }); this.setState({ findATableIsClicked: true }); console.log('inside ajax', this.state);},
+      success: data => {this.setState({ availableSlots: data, findATableIsHidden: true }); console.log('inside ajax', this.state);},
       error: () => console.log("Fail: GET available slots!")
     });
   }
@@ -53,14 +64,14 @@ class App extends React.Component {
 
           <div className="timeBox">
             <div className="time">Time</div>
-            <Time value={this.state.value} times={this.state.times} ref={(ref) => this.myTime = ref}/> <br/>
+            <Time value={this.state.value} times={this.state.times} handleInputChange={this.handleInputChange} ref={(ref) => this.myTime = ref}/> <br/>
           </div>
 
         </div>
 
-        {this.state.findATableIsClicked ? null : <FindATable handleFindATable={this.handleFindATable.bind(this)}/>}
+        {this.state.findATableIsHidden ? null : <FindATable handleFindATable={this.handleFindATable.bind(this)}/>}
         {console.log('inside render', this.state.availableSlots)}
-        {this.state.findATableIsClicked ? <Slots availableSlots={this.state.availableSlots}/> : null}
+        {this.state.findATableIsHidden ? <Slots availableSlots={this.state.availableSlots}/> : null}
 
 
         <div className="footer">

@@ -166,3 +166,20 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   display: flex;
   flex-wrap: wrap;
 }
+
+.showNextAvailable {
+  border: 1px solid #d8d9db;
+  border-radius: 2px;
+  background-color: white;
+  cursor: pointer;
+  align-items: flex-start;
+  text-align: center;
+  width: 320px;
+  height: 40px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.notAvailable {
+  font-size: 14px;
+}
