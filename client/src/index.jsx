@@ -67,13 +67,13 @@ class App extends React.Component {
         {this.state.findATableIsHidden && this.state.availableSlots.length > 0 ? <Slots availableSlots={this.state.availableSlots}/> : null}
 
         {this.state.findATableIsHidden && this.state.availableSlots.length === 0 ? <NotAvailable/> : null}
-        {this.state.findATableIsHidden && this.state.availableSlots.length === 0 ? <ShowNextAvailable/> : null}
-
 
         <div className="footer">
           <img className="footerImg" src={require("../../images/booked.png")}/>
           <div className= "footerText">Booked 8 times today</div>
         </div>
+
+        {this.state.findATableIsHidden && this.state.availableSlots.length === 0 ? <ShowNextAvailable/> : null}
 
       </div>)
   }
