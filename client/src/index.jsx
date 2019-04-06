@@ -35,7 +35,7 @@ class App extends React.Component {
     var time = this.myTime.state.value;
 
     $.ajax({
-      url: `api/restaurants/${restaurantId}/${partySize}/${date}/${time}`,
+      url: `api/restaurants/${restaurantId}/${partySize}/"${date}"/${time}`,
       method: "GET",
       contentType: "application/json",
       success: data => {this.setState({ availableSlots: data, findATableIsHidden: true }); console.log('inside ajax', this.state, 'date', date);},
@@ -64,12 +64,15 @@ class App extends React.Component {
         </div>
 
         {this.state.findATableIsHidden ? null : <FindATable handleFindATable={this.handleFindATable.bind(this)}/>}
-        {this.state.findATableIsHidden ? <Slots availableSlots={this.state.availableSlots}/> : null}
+        {this.state.findATableIsHidden && this.state.availableSlots.length > 0 ? <Slots availableSlots={this.state.availableSlots}/> : null}
+
+        {this.state.findATableIsHidden && this.state.availableSlots.length === 0 ? <NotAvailable/> : null}
+        {this.state.findATableIsHidden && this.state.availableSlots.length === 0 ? <ShowNextAvailable/> : null}
 
 
         <div className="footer">
           <img className="footerImg" src={require("../../images/booked.png")}/>
-          <div className= "footerText">Booked 2 times today</div>
+          <div className= "footerText">Booked 8 times today</div>
         </div>
 
       </div>)

@@ -1,7 +1,16 @@
 import React from 'react';
 
-const ShowNextAvailable = () => (
-  <button className="showNextAvailable" >Show next available</button>
-)
+class ShowNextAvailable extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <button className="showNextAvailable" >Show next available</button>
+    );
+  }
+}
+
 
 export default ShowNextAvailable;

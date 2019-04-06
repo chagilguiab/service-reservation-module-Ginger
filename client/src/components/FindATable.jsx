@@ -1,5 +1,4 @@
 import React from 'react';
-import $ from 'jquery';
 
 class FindATable extends React.Component {
   constructor(props) {

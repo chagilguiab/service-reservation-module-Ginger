@@ -4,9 +4,6 @@ class Slots extends React.Component {
   constructor(props) {
     super(props);
     console.log('constructor', props.availableSlots);
-    // this.state = {
-    //   availableSlots: props.availableSlots
-    // };
   }
 
 
