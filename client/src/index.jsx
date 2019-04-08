@@ -21,9 +21,10 @@ class App extends React.Component {
     this.handleInputChange = this.handleInputChange.bind(this);
   }
 
-  // componentDidMount() {
-  //   document.getElementById('dateInput').value = new Date.toISOString().substr(0, 10);
-  // }
+  componentDidMount() {
+    var date = new Date();
+    document.getElementById('dateInput').value = date.toISOString().substr(0, 10);
+  }
 
   handleInputChange() {
     this.setState({
