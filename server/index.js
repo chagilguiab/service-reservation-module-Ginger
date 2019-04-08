@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const db = require('../database');
 const app = express();
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3001;
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
@@ -25,7 +25,7 @@ var showAvailableSlots = function(restaurantId, partySize, date, time, firstSlot
   });
 }
 
-app.get('/api/restaurants/:restaurantId/:partySize/:date/:time', function(req, res) {
+app.get('/:restaurantId/:partySize/:date/:time', function(req, res) {
   let {restaurantId} = req.params;
   let {partySize} = req.params;
   let {date} = req.params;
@@ -34,6 +34,10 @@ app.get('/api/restaurants/:restaurantId/:partySize/:date/:time', function(req, r
   let lastSlot = time - (-30);
 
   showAvailableSlots(restaurantId, partySize, date, firstSlot, firstSlot, lastSlot, [], res);
+});
+
+app.get('/:restaurantId', function(req, res) {
+  res.send(req.params.restaurantId);
 });
 
 app.listen(port, function() {

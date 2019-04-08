@@ -21,12 +21,22 @@ class App extends React.Component {
     this.handleInputChange = this.handleInputChange.bind(this);
   }
 
-  // var id = window.location.pathname.split('/')[0];
+
+  // componentWillMount() {
+  //   this.handleRestaurantId();
+  // }
 
   componentDidMount() {
     var date = new Date();
     document.getElementById('dateInput').value = date.toISOString().substr(0, 10);
   }
+
+  // handleRestaurantId() {
+  //   const id = window.location.pathname;
+  //   this.setState({
+  //     restaurantId: id,
+  //   });
+  // }
 
   handleInputChange() {
     this.setState({
@@ -42,7 +52,7 @@ class App extends React.Component {
     var time = this.myTime.state.value;
 
     $.ajax({
-      url: `api/restaurants/${restaurantId}/${partySize}/"${date}"/${time}`,
+      url: `/${restaurantId}/${partySize}/"${date}"/${time}`,
       method: "GET",
       contentType: "application/json",
       success: data => {this.setState({ availableSlots: data, findATableIsHidden: true }); console.log('inside ajax', this.state, 'date', date);},
