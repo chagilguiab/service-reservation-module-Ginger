@@ -40,19 +40,3 @@ app.listen(port, function() {
   console.log(`listening on port ${port}`);
 });
 
-
-// app.get('/api/restaurants/:restaurantId/:partySize/:date/:time', function(req, res) {
-//   let {restaurantId} = req.params;
-//   let {partySize} = req.params;
-//   let {date} = req.params;
-//   let {time} = req.params;
-
-//   db.getAllReservationsAtDateAroundTime(restaurantId, date, time, function(err, results) {
-//     if(err) {
-//       console.log("Can not GET reservations");
-//       res.send(err);
-//     } else {
-//       res.send(results);
-//     }
-//   });
-// });

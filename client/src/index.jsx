@@ -21,6 +21,8 @@ class App extends React.Component {
     this.handleInputChange = this.handleInputChange.bind(this);
   }
 
+  // var id = window.location.pathname.split('/')[0];
+
   componentDidMount() {
     var date = new Date();
     document.getElementById('dateInput').value = date.toISOString().substr(0, 10);
