@@ -21,6 +21,10 @@ class App extends React.Component {
     this.handleInputChange = this.handleInputChange.bind(this);
   }
 
+  // componentDidMount() {
+  //   document.getElementById('dateInput').value = new Date.toISOString().substr(0, 10);
+  // }
+
   handleInputChange() {
     this.setState({
       findATableIsHidden: false
@@ -66,7 +70,7 @@ class App extends React.Component {
         {this.state.findATableIsHidden ? null : <FindATable handleFindATable={this.handleFindATable.bind(this)}/>}
         {this.state.findATableIsHidden && this.state.availableSlots.length > 0 ? <Slots availableSlots={this.state.availableSlots}/> : null}
 
-        {this.state.findATableIsHidden && this.state.availableSlots.length === 0 ? <NotAvailable/> : null}
+        {this.state.findATableIsHidden && this.state.availableSlots.length === 0 ? <NotAvailable time={this.myTime.state.value}/> : null}
 
         <div className="footer">
           <img className="footerImg" src={require("../../images/booked.png")}/>

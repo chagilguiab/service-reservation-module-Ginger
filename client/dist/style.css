@@ -53,6 +53,14 @@ body {
   border-bottom: 2px solid #da3743;
 }
 
+.select:hover + .arrowPartySize {
+  border-bottom: 2px solid #da3743;
+}
+
+.select:hover + .arrowTime {
+  border-bottom: 2px solid #da3743;
+}
+
 .dateForm {
   padding-top: 7px;
 }
@@ -75,6 +83,8 @@ body {
 
 .timeSelect {
   padding-left: 6px;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .dateBox {
@@ -86,6 +96,7 @@ body {
   width: 152px;
   padding-left: 6px;
 }
+
 
 .dateTime {
   display: flex;
@@ -115,7 +126,7 @@ body {
 }
 
 .footerText {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: bold;
   padding-left: 5px;
 }
@@ -205,7 +216,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .notAvailable {
-  font-size: 14px;
+  font-size: 15px;
   padding-top: 10px;
   padding-bottom: 10px;
 }
@@ -222,4 +233,29 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   margin-top: 10px;
   margin-bottom: 10px;
   background-color: #f2f2f2
+}
+
+.arrowPartySize {
+  color: #6f737b;
+  width: 2.5%;
+  height: 2.5%;
+  border-bottom: 1px solid #d8d9db;
+  align-self: flex-end;
+  padding-bottom: 10px;
+  cursor: pointer;
+}
+
+.arrowTime {
+  color: #6f737b;
+  width: 6%;
+  height: 6%;
+  border-bottom: 1px solid #d8d9db;
+  align-self: flex-end;
+  padding-bottom: 10px;
+  cursor: pointer;
+}
+
+.partySizeSelect {
+  display: flex;
+  justify-content: flex-end;
 }
