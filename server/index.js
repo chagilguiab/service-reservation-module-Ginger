@@ -2,18 +2,13 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const db = require('../database');
 const app = express();
-// const cors = require('cors');
-// const router = require('./router.js');
 
 const port = process.env.PORT || 3001;
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
-//app.use(cors());
 
 app.use(express.static(__dirname + '/../client/dist'));
-
-// app.use(router);
 
 
 var showAvailableSlots = function(restaurantId, partySize, date, time, firstSlot, lastSlot, slots, res) {

@@ -13,6 +13,7 @@ import ShowNextAvailable from './components/ShowNextAvailable.jsx';
 class App extends React.Component {
   constructor (props) {
     super(props);
+    console.log(props.path);
     this.state = {
       restaurantId: 1,
       availableSlots: [],
