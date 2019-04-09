@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const db = require('../database');
+const path = require('path');
 const app = express();
 
 const port = process.env.PORT || 3001;
@@ -37,9 +38,10 @@ app.get('/:restaurantId/:partySize/:date/:time', function(req, res) {
   showAvailableSlots(restaurantId, partySize, date, firstSlot, firstSlot, lastSlot, [], res);
 });
 
-// app.get('/:restaurantId', function(req, res) {
-//   res.send(req.params.restaurantId);
-// });
+app.get('/:restaurantId', function(req, res) {
+  const reactPath = path.join(__dirname, '/../client/dist/index.html');
+  res.sendFile(reactPath);
+});
 
 app.listen(port, function() {
   console.log(`listening on port ${port}`);

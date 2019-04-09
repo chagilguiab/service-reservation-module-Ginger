@@ -8,7 +8,7 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "seed:db": "mysql -u root < schema.sql && node database/generate.js",
+    "seed": "mysql -u root < schema.sql && node database/generate.js",
     "build": "webpack -d --watch",
     "start": "nodemon server/index.js -w database -w server"
   },

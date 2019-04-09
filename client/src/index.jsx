@@ -15,7 +15,6 @@ class App extends React.Component {
     super(props);
     console.log(props.path);
     this.state = {
-      restaurantId: 1,
       availableSlots: [],
       findATableIsHidden: false
     }
@@ -23,22 +22,11 @@ class App extends React.Component {
   }
 
 
-  // componentWillMount() {
-  //   this.handleRestaurantId();
-  // }
-
   componentDidMount() {
     var date = new Date();
     document.getElementById('dateInput').value = date.toISOString().substr(0, 10);
   }
 
-  // handleRestaurantId() {
-  //   const id = window.location.pathname;
-  //   console.log(id);
-  //   this.setState({
-  //     restaurantId: id,
-  //   });
-  // }
 
   handleInputChange() {
     this.setState({
@@ -48,7 +36,8 @@ class App extends React.Component {
 
 
   handleFindATable() {
-    var restaurantId = this.state.restaurantId;
+    const restaurantId = parseInt(window.location.href.split('/').pop());
+    console.log(restaurantId);
     var partySize = this.myPartySize.state.value;
     var date = document.getElementById('dateInput').value;
     var time = this.myTime.state.value;
