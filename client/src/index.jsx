@@ -33,6 +33,7 @@ class App extends React.Component {
 
   // handleRestaurantId() {
   //   const id = window.location.pathname;
+  //   console.log(id);
   //   this.setState({
   //     restaurantId: id,
   //   });

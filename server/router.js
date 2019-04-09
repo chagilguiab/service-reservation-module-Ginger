@@ -1,20 +1,13 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const db = require('../database');
-const app = express();
-// const cors = require('cors');
-// const router = require('./router.js');
+const router = express.Router();
 
-const port = process.env.PORT || 3001;
 
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(bodyParser.json());
-//app.use(cors());
+router.use(bodyParser.urlencoded({extended: true}));
+router.use(bodyParser.json());
 
-app.use(express.static(__dirname + '/../client/dist'));
-
-// app.use(router);
-
+router.use('/:restaurantId', express.static(path.join(__dirname, '/../client/dist')));
 
 var showAvailableSlots = function(restaurantId, partySize, date, time, firstSlot, lastSlot, slots, res) {
   if (time > lastSlot) {
@@ -30,8 +23,7 @@ var showAvailableSlots = function(restaurantId, partySize, date, time, firstSlot
   });
 }
 
-
-app.get('/:restaurantId/:partySize/:date/:time', function(req, res) {
+router.get('/:restaurantId/:partySize/:date/:time', function(req, res) {
   let {restaurantId} = req.params;
   let {partySize} = req.params;
   let {date} = req.params;
@@ -42,11 +34,8 @@ app.get('/:restaurantId/:partySize/:date/:time', function(req, res) {
   showAvailableSlots(restaurantId, partySize, date, firstSlot, firstSlot, lastSlot, [], res);
 });
 
-// app.get('/:restaurantId', function(req, res) {
-//   res.send(req.params.restaurantId);
-// });
-
-app.listen(port, function() {
-  console.log(`listening on port ${port}`);
+router.get('*', (req, res) => {
+  res.status(404).send('Invalid Restaurant ID');
 });
 
+module.exports = router;
