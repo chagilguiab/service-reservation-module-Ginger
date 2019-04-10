@@ -1,5 +1,5 @@
 module.exports = {
   user: 'root',
   password: '',
-  database: 'opentable'
+  database: 'opentable_reservation'
 };

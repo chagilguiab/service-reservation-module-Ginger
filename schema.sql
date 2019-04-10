@@ -1,8 +1,8 @@
-DROP DATABASE IF EXISTS opentable;
+DROP DATABASE IF EXISTS opentable_reservation;
 
-CREATE DATABASE opentable;
+CREATE DATABASE opentable_reservation;
 
-USE opentable;
+USE opentable_reservation;
 
 CREATE TABLE reservations (
   id int NOT NULL AUTO_INCREMENT,
