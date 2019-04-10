@@ -10,7 +10,7 @@ import NotAvailable from './components/NotAvailable.jsx';
 import ShowNextAvailable from './components/ShowNextAvailable.jsx';
 
 
-class App extends React.Component {
+class Reservation extends React.Component {
   constructor (props) {
     super(props);
     console.log(props.path);
@@ -53,7 +53,7 @@ class App extends React.Component {
 
 
   render() {
-    return (<div className="app">
+    return (<div className="reservation">
         <div className="makeAReservation">Make a reservation</div>
 
         <div className="partySize">Party Size</div>
@@ -87,4 +87,4 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(<App restaurantId={window.location.pathname}/>, document.getElementById('app'));
+ReactDOM.render(<Reservation />, document.getElementById('reservation'));
