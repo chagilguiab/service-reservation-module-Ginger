@@ -14,8 +14,17 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
-        include: __dirname + '/src'
+        use: [
+          require.resolve('style-loader'),
+          {
+            loader: require.resolve('css-loader'),
+            options: {
+              importLoaders: 1,
+              modules: true,
+              localIndentName: '[name]__[local]__[hash:base64:5]'
+            }
+          }
+        ]
       },
       {
         test: /\.(gif|png|jpe?g|svg)$/i,
