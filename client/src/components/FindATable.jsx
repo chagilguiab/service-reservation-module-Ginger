@@ -1,4 +1,5 @@
 import React from 'react';
+import style from './styles';
 
 class FindATable extends React.Component {
   constructor(props) {
@@ -11,7 +12,7 @@ class FindATable extends React.Component {
 
   render() {
     return (
-      <button className="findATable" onClick={this.state.handleFindATable}>Find a Table</button>
+      <button className={style.findATable} onClick={this.state.handleFindATable}>Find a Table</button>
     );
   }
 }

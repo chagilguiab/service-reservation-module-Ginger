@@ -8,6 +8,7 @@ import FindATable from './components/FindATable.jsx';
 import Slots from './components/Slots.jsx';
 import NotAvailable from './components/NotAvailable.jsx';
 import ShowNextAvailable from './components/ShowNextAvailable.jsx';
+import style from './components/styles.css';
 
 
 class Reservation extends React.Component {
@@ -53,20 +54,20 @@ class Reservation extends React.Component {
 
 
   render() {
-    return (<div className="reservation">
-        <div className="makeAReservation">Make a reservation</div>
+    return (<div className={style.reservation}>
+        <div className={style.makeAReservation}>Make a reservation</div>
 
-        <div className="partySize">Party Size</div>
+        <div className={style.partySize}>Party Size</div>
         <PartySize sizes={this.state.sizes} handleInputChange={this.handleInputChange} ref={(ref) => this.myPartySize = ref}/>
 
-        <div className="dateTime">
-          <div className="dateBox">
-            <div className="date">Date</div>
+        <div className={style.dateTime}>
+          <div className={style.dateBox}>
+            <div className={style.date}>Date</div>
             <Calendar handleInputChange={this.handleInputChange}/>
           </div>
 
-          <div className="timeBox">
-            <div className="time">Time</div>
+          <div className={style.timeBox}>
+            <div className={style.time}>Time</div>
             <Time value={this.state.value} times={this.state.times} handleInputChange={this.handleInputChange} ref={(ref) => this.myTime = ref}/> <br/>
           </div>
         </div>
@@ -76,9 +77,9 @@ class Reservation extends React.Component {
 
         {this.state.findATableIsHidden && this.state.availableSlots.length === 0 ? <NotAvailable time={this.myTime.state.value}/> : null}
 
-        <div className="footer">
-          <img className="footerImg" src={require("../../images/booked.png")}/>
-          <div className= "footerText">Booked 8 times today</div>
+        <div className={style.footer}>
+          <img className={style.footerImg} src={require("../../images/booked.png")}/>
+          <div className= {style.footerText}>Booked 8 times today</div>
         </div>
 
         {this.state.findATableIsHidden && this.state.availableSlots.length === 0 ? <ShowNextAvailable/> : null}

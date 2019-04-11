@@ -14,7 +14,17 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
+        use: [
+          require.resolve('style-loader'),
+          {
+            loader: require.resolve('css-loader'),
+            options: {
+              importLoaders: 1,
+              modules: true,
+              localIndentName: '[name]__[local]__[hash:base64:5]'
+            }
+          }
+        ]
       },
       {
         test: /\.(gif|png|jpe?g|svg)$/i,
@@ -31,7 +41,7 @@ module.exports = {
       }
     ]
   },
-  resolve: { extensions: ["*", ".js", ".jsx"] },
+  resolve: { extensions: ["*", ".js", ".jsx", ".css"] },
   output: {
     filename: 'bundle.js',
     path: __dirname + '/client/dist'

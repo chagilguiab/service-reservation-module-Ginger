@@ -1,4 +1,5 @@
 import React from 'react';
+import style from './styles.css';
 
 class NotAvailable extends React.Component {
   constructor(props) {
@@ -24,9 +25,9 @@ class NotAvailable extends React.Component {
 
   render() {
     return (
-      <div className="notAvailableContainer">
-        <img className="warning" src={require("../../../images/warning.png")}/>
-        <div className="notAvailable" >At the moment, there’s no online availability within 1 hour of {this.convertTime(this.props.time)}. Have another time in mind?</div>
+      <div className={style.notAvailableContainer}>
+        <img className={style.warning} src={require("../../../images/warning.png")}/>
+        <div className={style.notAvailable} >At the moment, there’s no online availability within 1 hour of {this.convertTime(this.props.time)}. Have another time in mind?</div>
       </div>
     );
   }
