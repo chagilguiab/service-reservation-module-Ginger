@@ -15,6 +15,7 @@ module.exports = {
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
+        include: __dirname + '/src'
       },
       {
         test: /\.(gif|png|jpe?g|svg)$/i,
@@ -31,7 +32,7 @@ module.exports = {
       }
     ]
   },
-  resolve: { extensions: ["*", ".js", ".jsx"] },
+  resolve: { extensions: ["*", ".js", ".jsx", ".css"] },
   output: {
     filename: 'bundle.js',
     path: __dirname + '/client/dist'

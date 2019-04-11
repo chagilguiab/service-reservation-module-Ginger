@@ -1,4 +1,5 @@
 import React from 'react';
+import style from './styles.css';
 
 class Calendar extends React.Component {
   constructor(props) {
@@ -19,8 +20,8 @@ class Calendar extends React.Component {
   render() {
     console.log(this.state.selectedDate);
     return (
-      <div className="dateSelect">
-        <form className="dateForm" action="/action_page.php">
+      <div className={style.dateSelect}>
+        <form className={style.dateForm} action="/action_page.php">
           <input type="date" id="dateInput" onChange={this.handleChange}/>
         </form>
       </div>

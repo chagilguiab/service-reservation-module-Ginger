@@ -1,4 +1,5 @@
 import React from 'react';
+import style from './styles';
 
 class Slots extends React.Component {
   constructor(props) {
@@ -30,7 +31,7 @@ class Slots extends React.Component {
     formatedSlots = formatedSlots.reverse();
 
     formatedSlots.forEach(slot => {
-      slots.push(<button className="slot"> <img className="tableImg" src={require("../../../images/table.png")}/> {slot} </button>);
+      slots.push(<button className={style.slot}> <img className={style.tableImg} src={require("../../../images/table.png")}/> {slot} </button>);
     });
     return slots;
   }
@@ -39,8 +40,8 @@ class Slots extends React.Component {
     console.log(this);
     return (
       <div>
-        <div className="selectATime">Select a time:</div>
-        <div className="slots">
+        <div className={style.selectATime}>Select a time:</div>
+        <div className={style.slots}>
           {this.createSlots()}
         </div>
       </div>

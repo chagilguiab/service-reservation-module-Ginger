@@ -1,4 +1,5 @@
 import React from 'react';
+import style from './styles.css';
 
 class ShowNextAvailable extends React.Component {
   constructor(props) {
@@ -7,7 +8,7 @@ class ShowNextAvailable extends React.Component {
 
   render() {
     return (
-      <button className="showNextAvailable" >Show next available</button>
+      <button className={style.showNextAvailable} >Show next available</button>
     );
   }
 }
