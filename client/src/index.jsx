@@ -36,14 +36,14 @@ class Reservation extends React.Component {
 
 
   handleFindATable() {
-    const restaurantId = parseInt(window.location.href.split('/').pop());
-    console.log(restaurantId);
+    const id = parseInt(window.location.href.split('/').pop());
+    console.log(id);
     var partySize = this.myPartySize.state.value;
     var date = document.getElementById('dateInput').value;
     var time = this.myTime.state.value;
 
     $.ajax({
-      url: `/${restaurantId}/${partySize}/"${date}"/${time}`,
+      url: `/${id}/${partySize}/"${date}"/${time}`,
       method: "GET",
       contentType: "application/json",
       success: data => {this.setState({ availableSlots: data, findATableIsHidden: true }); console.log('inside ajax', this.state, 'date', date);},

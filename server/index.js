@@ -12,33 +12,33 @@ app.use(bodyParser.json());
 app.use(express.static(__dirname + '/../client/dist'));
 
 
-var showAvailableSlots = function(restaurantId, partySize, date, time, firstSlot, lastSlot, slots, res) {
+var showAvailableSlots = function(id, partySize, date, time, firstSlot, lastSlot, slots, res) {
   if (time > lastSlot) {
     res.send(slots);
     return;
   }
-  db.showAvailableTables(restaurantId, partySize, date, time, function(err, results) {
+  db.showAvailableTables(id, partySize, date, time, function(err, results) {
     if (!err && results.length > 0) {
-      showAvailableSlots(restaurantId, partySize, date, time - (-15), firstSlot, lastSlot, [time].concat(slots), res);
+      showAvailableSlots(id, partySize, date, time - (-15), firstSlot, lastSlot, [time].concat(slots), res);
     } else {
-      showAvailableSlots(restaurantId, partySize, date, time - (-15), firstSlot, lastSlot, slots, res);
+      showAvailableSlots(id, partySize, date, time - (-15), firstSlot, lastSlot, slots, res);
     }
   });
 }
 
 
-app.get('/:restaurantId/:partySize/:date/:time', function(req, res) {
-  let {restaurantId} = req.params;
+app.get('/:id/:partySize/:date/:time', function(req, res) {
+  let {id} = req.params;
   let {partySize} = req.params;
   let {date} = req.params;
   let {time} = req.params;
   let firstSlot = time - 30;
   let lastSlot = time - (-30);
 
-  showAvailableSlots(restaurantId, partySize, date, firstSlot, firstSlot, lastSlot, [], res);
+  showAvailableSlots(id, partySize, date, firstSlot, firstSlot, lastSlot, [], res);
 });
 
-app.get('/:restaurantId', function(req, res) {
+app.get('/:id', function(req, res) {
   const reactPath = path.join(__dirname, '/../client/dist/index.html');
   res.sendFile(reactPath);
 });
