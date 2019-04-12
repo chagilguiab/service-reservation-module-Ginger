@@ -37,7 +37,8 @@ class Reservation extends React.Component {
 
 
   handleFindATable() {
-    const id = parseInt(window.location.href.split('/').pop());
+    const id = parseInt(window.location.href.split('/')[3]);
+    console.log("url", window.location.href.split('/'));
     console.log(id);
     var partySize = this.myPartySize.state.value;
     var date = document.getElementById('dateInput').value;

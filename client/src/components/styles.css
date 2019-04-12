@@ -3,6 +3,7 @@ body {
 }
 
 .reservation {
+  font-family: "Josefin Sans", serif;
   width: 320px;
   padding: 10px;
   margin: 0;
@@ -12,6 +13,7 @@ body {
 }
 
 .makeAReservation {
+  font-family: "Josefin Sans", serif;
   height: 32px;
   font-size: 21px;
   font-weight: bold;
@@ -19,23 +21,27 @@ body {
   text-align: center;
 }
 .partySize {
+  font-family: "Josefin Sans", serif;
   padding-top: 15px;
   font-size: 14px;
 }
 
 .date {
+  font-family: "Josefin Sans", serif;
   padding-top: 15px;
   font-size: 14px;
   padding-right: 6px;
 }
 
 .time {
+  font-family: "Josefin Sans", serif;
   padding-top: 15px;
   font-size: 14px;
   padding-left: 6px;
 }
 
 .select {
+  font-family: "Josefin Sans", serif;
   border: none;
   background-color: white;
   width: 100%;
@@ -50,26 +56,32 @@ body {
 }
 
 .select:hover {
+  font-family: "Josefin Sans", serif;
   border-bottom: 2px solid #da3743;
 }
 
 .select:hover + .arrowPartySize {
+  font-family: "Josefin Sans", serif;
   border-bottom: 2px solid #da3743;
 }
 
 .select:hover + .arrowTime {
+  font-family: "Josefin Sans", serif;
   border-bottom: 2px solid #da3743;
 }
 
 .dateForm {
+  font-family: "Josefin Sans", serif;
   padding-top: 7px;
 }
 
 .dateInput {
+  font-family: "Josefin Sans", serif;
   border: none;
 }
 
 .dateSelect {
+  font-family: "Josefin Sans", serif;
   width: 100%;
   height: 35px;
   padding-right: 6px;
@@ -78,10 +90,12 @@ body {
 }
 
 .dateSelect:hover {
+  font-family: "Josefin Sans", serif;
   border-bottom: 2px solid #da3743;
 }
 
 .timeSelect {
+  font-family: "Josefin Sans", serif;
   padding-left: 6px;
   display: flex;
   justify-content: flex-end;
@@ -104,7 +118,8 @@ body {
 }
 
 .findATable {
-  width: 320px;
+  font-family: "Josefin Sans", serif;
+  width: 300px;
   height: 50px;
   padding: 10px;
   background-color: #da3743;
@@ -126,6 +141,7 @@ body {
 }
 
 .footerText {
+  font-family: "Josefin Sans", serif;
   font-size: 14px;
   font-weight: bold;
   padding-left: 5px;
@@ -140,6 +156,7 @@ body {
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator {
+  font-family: "Josefin Sans", serif;
   border: none;
   background-color: white;
   /* width: 100%; */
@@ -161,6 +178,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .slot {
+  font-family: "Josefin Sans", serif;
   width: 92px;
   height: 32px;
   padding: 10px;
@@ -183,6 +201,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .selectATime {
+  font-family: "Josefin Sans", serif;
   display: flex;
   justify-content: flex-start;
   font-weight: bold;
@@ -192,11 +211,13 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .slots {
+  font-family: "Josefin Sans", serif;
   display: flex;
   flex-wrap: wrap;
 }
 
 .showNextAvailable {
+  font-family: "Josefin Sans", serif;
   border: 1px solid #d8d9db;
   border-radius: 2px;
   background-color: white;
@@ -216,6 +237,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .notAvailable {
+  font-family: "Josefin Sans", serif;
   font-size: 15px;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -256,6 +278,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .partySizeSelect {
+  font-family: "Josefin Sans", serif;
   display: flex;
   justify-content: flex-end;
 }
