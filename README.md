@@ -1,32 +1,33 @@
 # Project Name
 
-> Project description
+SDC Open Table Database
 
 ## Related Projects
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-
-## Table of Contents
-
-1. [Usage](#Usage)
-1. [Requirements](#requirements)
-1. [Development](#development)
+https://github.com/hrr37-sdc-cerf/service-menu-rebecca
+https://github.com/hrr37-sdc-cerf/service_sydney
 
 ## Usage
 
-> Some usage instructions
+Before seeding database, run brew install mongodb-community@4.0 to install Mongodb (if not previously installed)
 
-## Requirements
+Note: if you have not previously tapped the official MongoDB formula repository you will need to run brew tap mongodb/brew prior to running the install command
 
-An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
+Run brew services start mongodb-community@4.0 to start the service
 
-- Node 6.13.0
-- etc
+Run mongo from the terminal to connect a mongo shell to the running instance
 
 ## Development
+
+API Endpoints
+
+Read / GET - /:id/:partySize/:date/:time (show available times based on input party size, date and time)
+
+Create / POST - /:id/:partySize/:date/:time (Create reservation for selected date, time and party size. Note: this functionality has not yet been implemented)
+
+Update / PUT - /:id
+
+Delete / DELETE - /:id
 
 ### Installing Dependencies
 
