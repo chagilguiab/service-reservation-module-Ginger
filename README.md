@@ -5,11 +5,12 @@ SDC Open Table Database
 ## Related Projects
 
 https://github.com/hrr37-sdc-cerf/service-menu-rebecca
+
 https://github.com/hrr37-sdc-cerf/service_sydney
 
 ## Usage
 
-Before seeding database, run brew install mongodb-community@4.0 to install Mongodb (if not previously installed)
+*Before seeding database, run brew install mongodb-community@4.0 to install Mongodb (if not previously installed)
 
 Note: if you have not previously tapped the official MongoDB formula repository you will need to run brew tap mongodb/brew prior to running the install command
 
