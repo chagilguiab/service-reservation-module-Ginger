@@ -3,7 +3,7 @@ var fs = require('fs');
 
 var generateReservations = function() {
   var reservations = [];
-  for (var i = 0; i < 10; i++) {
+  for (var i = 0; i < 100000; i++) {
     var data = {};
     data.restaurantId = faker.random.number({"min": 1, "max": 100});
     data.tableNumber = faker.random.number({"min": 1, "max": 4});
@@ -31,8 +31,17 @@ var generateTables = function() {
   return tables;
 }
 
-generateReservations();
-generateTables();
+fs.writeFile('./database/tables.json', JSON.stringify(generateTables()), function(err){
+  if (err) throw err;
+  console.log('YAY!')
+});
+
+fs.writeFile('./database/reservations.json', JSON.stringify(generateReservations()), function(err){
+  if (err) throw err;
+  console.log('YAY!')
+});
+
+
 
 
 
