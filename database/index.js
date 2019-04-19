@@ -1,3 +1,11 @@
+// const mongoose = require('mongoose');
+// mongoose.connect('mongodb://localhost');
+// var db = mongoose.connection;
+// db.on('error', console.error.bind(console, 'connection error:'));
+// db.once('open', function() {
+//   // we're connected!
+// });
+
 const mysql = require('mysql');
 const mysqlConfig = require('./config.js');
 
