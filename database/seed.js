@@ -1,5 +1,5 @@
 const faker = require('faker');
-var fs = require('fs');
+const fs = require('fs');
 
 var generateReservations = function() {
   var reservations = [];
