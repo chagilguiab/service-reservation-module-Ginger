@@ -1,11 +1,11 @@
 const fs = require('fs');
 const csv = require('fast-csv');
-const data = require('../database/data.js');
+const data = require('./data.js');
 
-let csvReservations = csv.createWriteStream({ headers: true });
-let csvTables = csv.createWriteStream({ headers: true });
-let streamReservations = fs.createWriteStream('./database/data-reservations.csv');
-let streamTables = fs.createWriteStream('./database/data-tables.csv');
+const csvReservations = csv.createWriteStream({ headers: true });
+const csvTables = csv.createWriteStream({ headers: true });
+const streamReservations = fs.createWriteStream('./database/reservations.csv');
+const streamTables = fs.createWriteStream('./database/tables.csv');
 
 
 csvReservations.pipe(streamReservations);
