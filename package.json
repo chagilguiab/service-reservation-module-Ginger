@@ -9,6 +9,7 @@
   },
   "scripts": {
     "seed": "node database/seed.js",
+    "mongo": "mongoimport --db open_table --collection reservations --type csv --headerline --file data.csv",
     "build": "webpack -d --watch",
     "start": "nodemon server/index.js -w database -w server"
   },
@@ -17,7 +18,9 @@
     "csv-write-stream": "^2.0.0",
     "express": "^4.16.4",
     "faker": "^4.1.0",
+    "fast-csv": "^2.5.0",
     "jquery": "^3.3.1",
+    "json2csv": "^4.5.0",
     "mongoose": "^5.5.2",
     "mysql": "^2.16.0",
     "nodemon": "^1.18.10",

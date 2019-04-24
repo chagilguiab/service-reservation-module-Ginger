@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost');
+mongoose.connect('mongodb://localhost/open_table');
 const db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -10,7 +10,7 @@ db.once('open', function() {
 const reservationSchema = new mongoose.Schema({
   restaurantId: Number,
   tableNumber: Number,
-  date: Date,
+  date: String,
   time: Number
 });
 
@@ -20,4 +20,8 @@ const tableSchema = new mongoose.Schema({
   maxOccupancy: Number
 });
 
-console.log(tableSchema)
+const Reservation = mongoose.model('Reservation', reservationSchema);
+
+module.exports = {
+  Reservation, reservationSchema
+}
