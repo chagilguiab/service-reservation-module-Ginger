@@ -18,7 +18,7 @@ Run brew services start mongodb-community@4.0 to start the service
 
 Run mongo from the terminal to connect a mongo shell to the running instance
 
-Type 'npm run seed' to seed database
+Type 'npm run seed' followed by 'npm run mongo' to seed database
 
 Type 'npm start' to start server
 
