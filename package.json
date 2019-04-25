@@ -9,6 +9,7 @@
   },
   "scripts": {
     "seed": "node database/seed.js",
+    "postgres": "node database/pg-seed.js",
     "mongo": "for i in `ls ./database/*csv`; do mongoimport -d open_table --type csv --headerline --file $i; done",
     "build": "webpack -d --watch",
     "start": "nodemon server/index.js -w database -w server"

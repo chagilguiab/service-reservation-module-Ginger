@@ -27,32 +27,6 @@ var generateTables = function() {
   return tables;
 }
 
-var writeReservations = function() {
-  console.time('timing seed');
-  var count = 1;
-  while (count <= 10) {
-    fs.writeFile(`./database/reservations.json`, JSON.stringify(generateReservations()), function(err){
-      if (err) throw err;
-      console.log('YAY!')
-    });
-    count++;
-  }
-  console.timeEnd('timing seed');
-}
-
-var writeTables = function () {
-  console.time('timing seed');
-  var count = 1;
-  while (count <= 10) {
-    fs.writeFile(`./database/tables${count}.json`, JSON.stringify(generateTables()), function(err){
-      if (err) throw err;
-      console.log('YAY!')
-    });
-    count++;
-  }
-  console.timeEnd('timing seed');
-}
-
 module.exports = {
-  generateReservations, writeReservations, generateTables, writeTables
+  generateReservations, generateTables
 }

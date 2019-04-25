@@ -8,7 +8,7 @@ https://github.com/hrr37-sdc-cerf/service-menu-rebecca
 
 https://github.com/hrr37-sdc-cerf/service_sydney
 
-## Usage
+## Seeding mongo database
 
 Before seeding database, run brew install mongodb-community@4.0 to install Mongodb (if not previously installed)
 
@@ -18,7 +18,15 @@ Run brew services start mongodb-community@4.0 to start the service
 
 Run mongo from the terminal to connect a mongo shell to the running instance
 
-Type 'npm run seed' followed by 'npm run mongo' to seed database
+Type 'npm run seed' followed by 'npm run mongo' to create records and seed database
+
+## Seeding postgreSQL database
+
+Before seeding database, run 'brew install postgresql' from terminal to install postgresql (if not previously installed)
+
+Type 'npm run seed' followed by 'npm run postgres' to create records and seed database
+
+## Usage
 
 Type 'npm start' to start server
 

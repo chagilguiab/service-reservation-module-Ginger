@@ -44,6 +44,7 @@ client.connect((err) => {
 
 client.query('CREATE TABLE IF NOT EXISTS tables(id SERIAL, restaurantId int NOT NULL, tableNumber int NOT NULL, maxOccupancy int NOT NULL)');
 
-client.query('CREATE TABLE IF NOT EXISTS reservations(id SERIAL, restaurantId int NOT NULL, tableNumber int NOT NULL, data varchar(50) NOT NULL, time int NOT NULL)');
+client.query('CREATE TABLE IF NOT EXISTS reservations(id SERIAL, restaurantId int NOT NULL, tableNumber int NOT NULL, date varchar(50) NOT NULL, time int NOT NULL)');
 
 
+module.exports = { client }
