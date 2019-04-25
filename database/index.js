@@ -1,51 +1,50 @@
+// mongo database setup
 // const mongoose = require('mongoose');
-// mongoose.connect('mongodb://localhost');
-// var db = mongoose.connection;
+// mongoose.connect('mongodb://localhost/open_table');
+// const db = mongoose.connection;
+
 // db.on('error', console.error.bind(console, 'connection error:'));
 // db.once('open', function() {
-//   // we're connected!
+//   console.log('connected!')
 // });
 
-const mysql = require('mysql');
-const mysqlConfig = require('./config.js');
+// const reservationSchema = new mongoose.Schema({
+//   restaurantId: Number,
+//   tableNumber: Number,
+//   date: String,
+//   time: Number
+// });
 
-const connection = mysql.createConnection(mysqlConfig);
+// const tableSchema = new mongoose.Schema({
+//   restaurantId: Number,
+//   tableNumber: Number,
+//   maxOccupancy: Number
+// });
 
-var getAllReservationsAtDateAroundTime = function(id, date, time, callback) {
-  connection.query(`select * from reservations where restaurantId = ${id} and date = ${date} and time >= ${time-60} and time <= ${time-(-60)}`, function(err, results) {
-    callback(err, results);
-  });
-}
+// const Reservation = mongoose.model('Reservation', reservationSchema);
 
-var getTablesOfRestaurant = function(id, callback) {
-  connection.query(`select * from tables where restaurantId = ${id}`), function(err, results) {
-    callback(err, results);
+// module.exports = {
+//   Reservation, reservationSchema
+// }
+
+// postgreSQL database setup
+
+const { Client } = require('pg');
+const client = new Client({
+  database: 'open_table'
+});
+
+client.connect((err) => {
+  if (err) {
+    console.error('connection error', err.stack)
+  } else {
+    console.log('connected')
   }
-}
+});
 
-var showAvailableTables = function(id, partySize, date, time, callback) {
-  connection.query(`select * from tables where restaurantId = ${id} and maxOccupancy >= ${partySize} and not exists (select * from reservations where restaurantId = ${id} and date = ${date} and time >= ${time-59} and time <= ${time-(-59)} and tableNumber = tables.tableNumber)`, function(err, results) {
-    callback(err, results);
-  });
-}
+client.query('CREATE TABLE IF NOT EXISTS tables(id SERIAL, restaurantId int NOT NULL, tableNumber int NOT NULL, maxOccupancy int NOT NULL)');
 
-var addReservation = function(id, tableNumber, date, time, callback) {
-  connection.query("insert into reservations (restaurantId, tableNumber, date, time) values (?, ?, ?, ?)", [id, tableNumber, date, time], function(err, results) {
-    callback(err, results);
-  });
-}
+client.query('CREATE TABLE IF NOT EXISTS reservations(id SERIAL, restaurantId int NOT NULL, tableNumber int NOT NULL, date varchar(50) NOT NULL, time int NOT NULL)');
 
-var addTable = function(id, tableNumber, maxOccupancy, callback) {
-  connection.query("insert into tables (restaurantId, tableNumber, maxOccupancy) values (?, ?, ?)", [id, tableNumber, maxOccupancy], function(err, results) {
-    callback(err, results);
-  });
-}
 
-module.exports = {
-  getAllReservationsAtDateAroundTime,
-  getTablesOfRestaurant,
-  showAvailableTables,
-  addReservation,
-  addTable
-}
-
+module.exports = { client }
