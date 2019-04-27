@@ -43,6 +43,7 @@ const writeTables = () => {
         tableCount++;
         return;
       }
+      console.log(tableCount)
       tableCount++;
     })
   }
