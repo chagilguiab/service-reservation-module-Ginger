@@ -18,7 +18,6 @@ class Calendar extends React.Component {
 
 
   render() {
-    console.log(this.state.selectedDate);
     return (
       <div className={style.dateSelect}>
         <form className={style.dateForm} action="/action_page.php">

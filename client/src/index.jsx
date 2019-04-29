@@ -28,7 +28,6 @@ class Reservation extends React.Component {
     document.getElementById('dateInput').value = date.toISOString().substr(0, 10);
   }
 
-
   handleInputChange() {
     this.setState({
       findATableIsHidden: false
@@ -38,17 +37,15 @@ class Reservation extends React.Component {
 
   handleFindATable() {
     const id = parseInt(window.location.href.split('/')[3]);
-    console.log("url", window.location.href.split('/'));
-    console.log(id);
     var partySize = this.myPartySize.state.value;
     var date = document.getElementById('dateInput').value;
     var time = this.myTime.state.value;
 
     $.ajax({
-      url: `/${id}/${partySize}/"${date}"/${time}`,
+      url: `/${id}/${partySize}/${date}/${time}`,
       method: "GET",
       contentType: "application/json",
-      success: data => {this.setState({ availableSlots: data, findATableIsHidden: true }); console.log('inside ajax', this.state, 'date', date);},
+      success: data => {this.setState({ availableSlots: data, findATableIsHidden: true }); console.log('inside ajax', this.state);},
       error: () => console.log("Fail: GET available slots!")
     });
   }
