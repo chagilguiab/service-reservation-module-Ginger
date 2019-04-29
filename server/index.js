@@ -3,7 +3,6 @@ const bodyParser = require('body-parser');
 const db = require('../database');
 const path = require('path');
 const app = express();
-// const table = require('../server/controllers/table.js')
 
 const port = process.env.PORT || 3001;
 
@@ -18,8 +17,7 @@ app.get('/:id/:partySize/:date/:time', async (req, res) => {
       slots.push(reservation.time)
     })
   });
-
-  db.getTimes(req.params.id, req.params.partySize, async (tables) => {
+  db.getTimes(req.params.id, req.params.partySize, (tables) => {
     let times = [];
     let time = parseInt(req.params.time);
     let min = time - 60;
@@ -39,6 +37,12 @@ app.get('/:id/:partySize/:date/:time', async (req, res) => {
     }
   });
 });
+
+app.post('/:id/:partySize/:date/:time/book', (req, res) => {
+  db.addReservation(req.params.id, req.params.partySize, req.params.date, req.params.time, (item) => {
+    res.send(item)
+  })
+})
 
 app.listen(port, function() {
   console.log(`listening on port ${port}`);

@@ -39,8 +39,19 @@ const getTimes = (restaurant, size, cb) => {
   })
 }
 
+const addReservation = (restaurant, table, date, time, cb) => {
+  Reservation.create({
+    restaurantId: restaurant,
+    tableNumber: table,
+    date: date,
+    time: time
+  }, (err, item) => {
+    cb(item)
+  })
+}
+
 module.exports = {
-  Table, Reservation, getReservations, getTimes
+  Table, Reservation, getReservations, getTimes, addReservation
 };
 
 //postgreSQL database setup
