@@ -13,47 +13,44 @@ const reservationSchema = new mongoose.Schema({
   tableNumber: Number,
   maxOccupancy: Number,
   reservations: [{
-    date: String,
-    time: Number
+    date: {type: String},
+    time: {type: Number}
   }]
 });
 
 const Reservation = mongoose.model('Reservation', reservationSchema);
 
-const tableSchema = new mongoose.Schema({
-  restaurantId: Number,
-  maxOccupancy: Number,
-  tableNumber: Number
-});
-
-const Table = mongoose.model('Table', tableSchema);
-
-const getReservations = (restaurant, date, cb) => {
-  return Reservation.find({$and:[{restaurantId: restaurant},{date: date}]}).lean().exec((err, item) => {
-    cb(item)
-  })
-}
-
 const getTimes = (restaurant, size, cb) => {
-    return Table.find({restaurantId: restaurant, maxOccupancy: { $gte: size
+  return Reservation.find({restaurantId: restaurant, maxOccupancy: { $gte: size
   }}).lean().exec((err, item) => {
     cb(item)
-  })
+  });
 }
 
-const addReservation = (restaurant, table, date, time, cb) => {
-  Reservation.create({
+// const getTimes = (restaurant, size, cb) => {
+//     return Table.find({restaurantId: restaurant, maxOccupancy: { $gte: size
+//   }}).lean().exec((err, item) => {
+//     cb(item)
+//   })
+// }
+
+const addReservation = (restaurant, size, table, date, time, cb) => {
+  Reservation.updateOne({
     restaurantId: restaurant,
+    maxOccupancy: size,
     tableNumber: table,
-    date: date,
-    time: time
+    reservations: [{
+      date: date,
+      time: time
+    }]
   }, (err, item) => {
+    console.log(item)
     cb(item)
   })
 }
 
 module.exports = {
-  Table, Reservation, getReservations, getTimes, addReservation
+  Reservation, getTimes, addReservation
 };
 
 //postgreSQL database setup

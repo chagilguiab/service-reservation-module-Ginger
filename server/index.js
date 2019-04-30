@@ -12,37 +12,28 @@ app.use(bodyParser.json());
 
 app.get('/:id/:partySize/:date/:time', async (req, res) => {
   let slots = [];
-  await db.getReservations(req.params.id, req.params.date, (item) => {
-    console.log(item)
-    item.forEach(reservation => {
-      slots.push({time: reservation.time, table: reservation.tableNumber})
-    })
-  });
-  db.getTimes(req.params.id, req.params.partySize, (tables) => {
-    let times = [];
-    let time = parseInt(req.params.time);
-    let min = time - 60;
-    let max = time + 60;
-    console.log(tables)
-    if(tables.length > 0) {
+  await db.getTimes(req.params.id, req.params.partySize, (item) => {
+    let min = parseInt(req.params.time) - 60;
+    let max = parseInt(req.params.time) + 60;
+    item.forEach(table => {
+      table.reservations.forEach(val => {
       for (let i = min; i <= max; i+=15) {
-        if(!slots.includes(i)) {
-          times.push(i)
+        if(val.date !== req.params.date && val.time !== i && !slots.includes(i)) {
+          slots.push(i)
+          }
         }
-      }
-      let sorted = times.sort((a, b) => {
-        return b - a;
       })
-      res.send(sorted);
-    } else {
-      res.send([])
-    }
-  });
+      console.log(table )
+    })
+      res.send(slots.sort((a, b) => {
+      return b - a;
+    }))
+  })
 });
 
-app.post('/:id/:partySize/:date/:time/book', (req, res) => {
-  db.addReservation(req.params.id, req.params.partySize, req.params.date, req.params.time, (item) => {
-    res.send(item)
+app.post('/:id/:partySize/:date/:time/:table', (req, res) => {
+  db.addReservation(req.params.id, req.params.table, req.params.partySize, req.params.date, req.params.time, (item) => {
+    console.log(item)
   })
 })
 
