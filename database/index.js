@@ -11,8 +11,11 @@ db.once('open', function() {
 const reservationSchema = new mongoose.Schema({
   restaurantId: Number,
   tableNumber: Number,
-  date: String,
-  time: Number
+  maxOccupancy: Number,
+  reservations: [{
+    date: String,
+    time: Number
+  }]
 });
 
 const Reservation = mongoose.model('Reservation', reservationSchema);
@@ -24,7 +27,6 @@ const tableSchema = new mongoose.Schema({
 });
 
 const Table = mongoose.model('Table', tableSchema);
-
 
 const getReservations = (restaurant, date, cb) => {
   return Reservation.find({$and:[{restaurantId: restaurant},{date: date}]}).lean().exec((err, item) => {

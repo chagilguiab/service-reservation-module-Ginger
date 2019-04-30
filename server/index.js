@@ -13,8 +13,9 @@ app.use(bodyParser.json());
 app.get('/:id/:partySize/:date/:time', async (req, res) => {
   let slots = [];
   await db.getReservations(req.params.id, req.params.date, (item) => {
+    console.log(item)
     item.forEach(reservation => {
-      slots.push(reservation.time)
+      slots.push({time: reservation.time, table: reservation.tableNumber})
     })
   });
   db.getTimes(req.params.id, req.params.partySize, (tables) => {
@@ -22,6 +23,7 @@ app.get('/:id/:partySize/:date/:time', async (req, res) => {
     let time = parseInt(req.params.time);
     let min = time - 60;
     let max = time + 60;
+    console.log(tables)
     if(tables.length > 0) {
       for (let i = min; i <= max; i+=15) {
         if(!slots.includes(i)) {
