@@ -1,3 +1,4 @@
+require('newrelic');
 const express = require('express');
 const bodyParser = require('body-parser');
 const db = require('../database');
@@ -10,30 +11,27 @@ app.use('/:id', express.static(__dirname + '/../client/dist'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-app.get('/:id/:partySize/:date/:time', async (req, res) => {
-  let slots = [];
-  await db.getTimes(req.params.id, req.params.partySize, (item) => {
+app.get('/:id/:partySize/:date/:time', (req, res) => {
+  db.getTimes(req.params.id, req.params.partySize, (item) => {
+    let slots = [];
     let min = parseInt(req.params.time) - 60;
     let max = parseInt(req.params.time) + 60;
-    item.forEach(table => {
-      table.reservations.forEach(val => {
-      for (let i = min; i <= max; i+=15) {
-        if(val.date !== req.params.date && val.time !== i && !slots.includes(i)) {
-          slots.push(i)
-          }
-        }
-      })
-      console.log(table )
-    })
+    for(let i = min; i <= max; i += 15) {
+      slots.push(i);
+    }
+    if(item && item.availTables.length > 0) {
       res.send(slots.sort((a, b) => {
-      return b - a;
-    }))
+        return b - a;
+      }))
+    } else {
+      res.send([])
+    }
   })
-});
+})
 
 app.post('/:id/:partySize/:date/:time/:table', (req, res) => {
   db.addReservation(req.params.id, req.params.table, req.params.partySize, req.params.date, req.params.time, (item) => {
-    console.log(item)
+    res.json(item)
   })
 })
 

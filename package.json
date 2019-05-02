@@ -10,7 +10,7 @@
   "scripts": {
     "seed": "node database/seed.js",
     "postgres": "node database/pg-seed.js",
-    "mongo": "for i in `ls ./database/seed-files/*json`; do mongoimport -d open_table --upsert --collection reservations --type json --jsonArray --file $i; done",
+    "mongo": "for i in `ls ./database/seed-files/*json`; do mongoimport -d open_table --upsert --collection reservations --type json --file $i; done",
     "build": "webpack -d --watch",
     "start": "nodemon server/index.js -w database -w server"
   },
@@ -25,6 +25,7 @@
     "mongoose": "^5.5.2",
     "mongoose-autopopulate": "^0.9.1",
     "mysql": "^2.16.0",
+    "newrelic": "^5.7.0",
     "nodemon": "^1.18.10",
     "pg": "^7.10.0",
     "react": "^16.8.6",
